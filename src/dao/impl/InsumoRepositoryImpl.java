@@ -4,10 +4,7 @@ import dao.ConnectionMysql;
 import dao.InsumoRepository;
 import model.Insumo;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +14,36 @@ import java.util.List;
 public class InsumoRepositoryImpl implements InsumoRepository {
 
     @Override
-    public Insumo create(final Insumo insumo) {
-        return null;
+    public boolean create(final Insumo insumo) {
+        Connection conn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        boolean ok = false;
+        try {
+            String sql = "INSERT INTO insumos VALUES (" +
+                    "'" + insumo.getOrigem() +"', "+ insumo.getCodigo() +", '"+
+                    insumo.getDescricao() +"' )";
+
+            conn = ConnectionMysql.getConnection();
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+
+            ok = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (ps != null)
+                    ps.close();
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return ok;
     }
 
     @Override
