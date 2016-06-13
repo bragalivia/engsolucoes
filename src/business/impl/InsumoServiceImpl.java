@@ -1,4 +1,4 @@
-package dao.impl;
+package business.impl;
 
 import dao.config.ConnectionMysql;
 import dao.InsumoRepository;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Livia on 12/06/2016.
  */
-public class InsumoRepositoryImpl implements InsumoRepository {
+public class InsumoServiceImpl implements InsumoRepository {
 
     @Override
     public boolean create(final Insumo insumo) {
