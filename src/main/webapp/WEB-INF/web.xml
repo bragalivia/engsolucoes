@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    (C) Copyright 2016 HP Development Company, L.P.
+
+    Confidential computer software. Valid license from HP required for possession, use or copying.
+    Consistent with FAR 12.211 and 12.212, Commercial Computer Software,
+    Computer Software Documentation, and Technical Data for Commercial Items are licensed
+    to the U.S. Government under vendor's standard commercial license.
+
+-->
+<!-- This web.xml file is not required when using Servlet 3.0 container,
+     see implementation details http://jersey.java.net/nonav/documentation/latest/jax-rs.html -->
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>CWP Egon Web Application</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.hp.cwp.egon.rest.config.Application</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CWP Egon Web Application</servlet-name>
+        <url-pattern>/api/v1/*</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>contextInitializerClasses</param-name>
+        <param-value>com.hp.cwp.egon.rest.config.EgonContextInitializer</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+
+    <filter>
+        <filter-name>TokenValidatorFilter</filter-name>
+        <filter-class>com.hp.ccp.commons.oic.jee.TokenValidatorFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TokenValidatorFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring-context.xml
+        </param-value>
+    </context-param>
+
+    <!-- Request Filter -->
+    <filter>
+        <filter-name>requestId-filter</filter-name>
+        <filter-class>com.hp.ccp.requestid.filter.RequestIdFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>requestId-filter</filter-name>
+        <url-pattern>/api/v1/*</url-pattern>
+    </filter-mapping>
+</web-app>
