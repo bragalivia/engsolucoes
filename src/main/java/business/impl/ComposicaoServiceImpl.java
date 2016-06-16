@@ -1,8 +1,8 @@
 package main.java.business.impl;
 
-import main.java.dao.InsumoRepository;
+import main.java.dao.ComposicaoRepository;
 import main.java.dao.config.ConnectionMysql;
-import main.java.rest.model.Insumo;
+import main.java.rest.model.Composicao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,18 +11,18 @@ import java.util.List;
 /**
  * Created by Livia on 12/06/2016.
  */
-public class InsumoServiceImpl implements InsumoRepository {
+public class ComposicaoServiceImpl implements ComposicaoRepository {
 
     @Override
-    public boolean create(final Insumo insumo) {
+    public boolean create(final Composicao composicao) {
         Connection conn = null;
         Statement stmt = null;
         PreparedStatement ps = null;
         boolean ok = false;
         try {
             String sql = "INSERT INTO insumos VALUES (" +
-                    "'" + insumo.getOrigem() +"', "+ insumo.getCodigo() +", '"+
-                    insumo.getDescricao() +"' )";
+                    "'" + composicao.getOrigem() +"', "+ composicao.getCodigo() +", '"+
+                    composicao.getDescricao() +"' )";
 
             conn = ConnectionMysql.getConnection();
             stmt = conn.createStatement();
@@ -47,15 +47,15 @@ public class InsumoServiceImpl implements InsumoRepository {
     }
 
     @Override
-    public Insumo update(final Insumo insumo) {
+    public Composicao update(final Composicao composicao) {
         return null;
     }
 
     @Override
-    public Insumo read(final Insumo insumo) {
+    public Composicao read(final Composicao composicao) {
         Connection conn = null;
         Statement stmt = null;
-        List<Insumo> list = new ArrayList<>();
+        List<Composicao> list = new ArrayList<>();
         try {
             String sql = "SELECT * FROM INSUMOS";
             conn = ConnectionMysql.getConnection();
@@ -84,11 +84,11 @@ public class InsumoServiceImpl implements InsumoRepository {
         return 0;
     }
 
-    private Insumo builder(ResultSet result) throws SQLException {
-        Insumo insumo = new Insumo();
-        insumo.setCodigo(result.getInt("codigo"));
-        insumo.setDescricao(result.getString("descricao"));
-        insumo.setOrigem(result.getString("origem"));
-        return insumo;
+    private Composicao builder(ResultSet result) throws SQLException {
+        Composicao composicao = new Composicao();
+        composicao.setCodigo(result.getInt("codigo"));
+        composicao.setDescricao(result.getString("descricao"));
+        composicao.setOrigem(result.getString("origem"));
+        return composicao;
     }
 }

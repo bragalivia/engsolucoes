@@ -1,4 +1,4 @@
-package dao.config;
+package main.java.dao.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

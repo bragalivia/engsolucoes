@@ -1,6 +1,6 @@
-package business;
+package main.java.business;
 
-import model.Insumo;
+import main.java.rest.model.Insumo;
 
 /**
  * Created by Livia on 12/06/2016.

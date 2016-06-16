@@ -1,34 +1,31 @@
 package main.java.rest;
 
-import main.java.business.InsumoService;
-
-import main.java.rest.model.Insumo;
+import main.java.business.ComposicaoService;
+import main.java.rest.model.Composicao;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
+
 import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 /**
  * Created by Livia on 13/06/2016.
  */
 
-@Path("insumo")
+@Path("composicao")
 @Service
-public class InsumoRest {
+public class ComposicaoRest {
     @Autowired
-    private InsumoService insumoService;
+    private ComposicaoService composicaoService;
 
     @GET
-    @Path("{insumoId}")
+    @Path("{composicaoId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@PathParam("insumoId") final String insumoId) {
-        Insumo result = insumoService.findById(insumoId);
+    public Response get(@PathParam("composicaoId") final String composicaoId) {
+        Composicao result = composicaoService.findById(composicaoId);
         if (result == null) {
             return notFound();
         }

@@ -1,8 +1,8 @@
-package dao.impl;
+package main.java.dao.impl;
 
-import dao.config.ConnectionMysql;
-import dao.InsumoRepository;
-import model.Insumo;
+import main.java.dao.InsumoRepository;
+import main.java.dao.config.ConnectionMysql;
+import main.java.rest.model.Insumo;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package main.java.rest.model;
 /**
  * Created by Livia on 12/06/2016.
  */
-public class Insumo {
+public class Composicao {
     private int codigo;
     private String origem;
     private String descricao;
