@@ -1,8 +1,8 @@
-package main.java.dao.impl;
+package dao.impl;
 
-import main.java.dao.ComposicaoRepository;
-import main.java.dao.config.ConnectionMysql;
-import main.java.rest.model.Composicao;
+import dao.ComposicaoRepository;
+import dao.config.ConnectionMysql;
+import rest.model.Composicao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class ComposicaoRepositoryImpl implements ComposicaoRepository {
 
-    @Override
     public boolean create(final Composicao composicao) {
         Connection conn = null;
         Statement stmt = null;
@@ -46,16 +45,14 @@ public class ComposicaoRepositoryImpl implements ComposicaoRepository {
         return ok;
     }
 
-    @Override
     public Composicao update(final Composicao insumo) {
         return null;
     }
 
-    @Override
     public Composicao read(final Composicao insumo) {
         Connection conn = null;
         Statement stmt = null;
-        List<Composicao> list = new ArrayList<>();
+        List<Composicao> list = new ArrayList<Composicao>();
         try {
             String sql = "SELECT * FROM INSUMOS";
             conn = ConnectionMysql.getConnection();
@@ -79,7 +76,6 @@ public class ComposicaoRepositoryImpl implements ComposicaoRepository {
         return list.get(0);
     }
 
-    @Override
     public int delete(final int codigo, final String origem) {
         return 0;
     }

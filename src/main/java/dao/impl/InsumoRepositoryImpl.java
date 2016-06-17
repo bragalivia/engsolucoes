@@ -1,8 +1,8 @@
-package main.java.dao.impl;
+package dao.impl;
 
-import main.java.dao.InsumoRepository;
-import main.java.dao.config.ConnectionMysql;
-import main.java.rest.model.Insumo;
+import dao.InsumoRepository;
+import dao.config.ConnectionMysql;
+import rest.model.Insumo;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class InsumoRepositoryImpl implements InsumoRepository {
 
-    @Override
     public boolean create(final Insumo insumo) {
         Connection conn = null;
         Statement stmt = null;
@@ -46,16 +45,14 @@ public class InsumoRepositoryImpl implements InsumoRepository {
         return ok;
     }
 
-    @Override
     public Insumo update(final Insumo insumo) {
         return null;
     }
 
-    @Override
     public Insumo read(final Insumo insumo) {
         Connection conn = null;
         Statement stmt = null;
-        List<Insumo> list = new ArrayList<>();
+        List<Insumo> list = new ArrayList<Insumo>();
         try {
             String sql = "SELECT * FROM INSUMOS";
             conn = ConnectionMysql.getConnection();
@@ -79,7 +76,6 @@ public class InsumoRepositoryImpl implements InsumoRepository {
         return list.get(0);
     }
 
-    @Override
     public int delete(final int codigo, final String origem) {
         return 0;
     }

@@ -1,6 +1,6 @@
-package main.java.dao;
+package dao;
 
-import main.java.rest.model.Insumo;
+import rest.model.Insumo;
 
 /**
  * Created by Livia on 12/06/2016.

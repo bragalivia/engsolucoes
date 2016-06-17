@@ -1,6 +1,6 @@
-package main.java.dao;
+package dao;
 
-import main.java.rest.model.Composicao;
+import rest.model.Composicao;
 
 /**
  * Created by Livia on 12/06/2016.

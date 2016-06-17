@@ -13,6 +13,12 @@
         <spring.version>4.2.5.RELEASE</spring.version>
         <spring.security.version>3.2.9.RELEASE</spring.security.version>
         <spring.retry.version>1.1.2.RELEASE</spring.retry.version>
+
+        <failsafe.plugin.version>2.18</failsafe.plugin.version>
+        <surefire.plugin.version>2.12</surefire.plugin.version>
+        <maven.jar.plugin.version>2.4</maven.jar.plugin.version>
+        <maven.assembly.plugin.version>2.3</maven.assembly.plugin.version>
+        <maven.antrun.plugin.version>1.7</maven.antrun.plugin.version>
     </properties>
 
     <prerequisites>
@@ -21,6 +27,18 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- http://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>3.9</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>${maven.antrun.plugin.version}</version>
+            </dependency>
             <!-- Spring -->
             <dependency>
                 <groupId>org.springframework</groupId>

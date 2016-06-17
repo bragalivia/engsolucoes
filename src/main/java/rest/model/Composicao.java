@@ -1,4 +1,4 @@
-package main.java.rest.model;
+package rest.model;
 
 /**
  * Created by Livia on 12/06/2016.
