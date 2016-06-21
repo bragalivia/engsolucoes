@@ -4,137 +4,91 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>engsolucoes.orcamento</groupId>
-    <artifactId>engsolucoes-orcamento-build-config</artifactId>
+    <groupId>engsolucoes</groupId>
+    <artifactId>engsolucoes.orcamento</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <properties>
-        <!-- Spring libraries -->
-        <spring.version>4.2.5.RELEASE</spring.version>
-        <spring.security.version>3.2.9.RELEASE</spring.security.version>
-        <spring.retry.version>1.1.2.RELEASE</spring.retry.version>
-
-        <failsafe.plugin.version>2.18</failsafe.plugin.version>
-        <surefire.plugin.version>2.12</surefire.plugin.version>
-        <maven.jar.plugin.version>2.4</maven.jar.plugin.version>
-        <maven.assembly.plugin.version>2.3</maven.assembly.plugin.version>
-        <maven.antrun.plugin.version>1.7</maven.antrun.plugin.version>
-    </properties>
-
-    <prerequisites>
-        <maven>3.0.5</maven>
-    </prerequisites>
 
     <dependencyManagement>
         <dependencies>
-            <!-- http://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
-            <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml</artifactId>
-                <version>3.9</version>
-            </dependency>
-
+            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-clean-plugin -->
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>${maven.antrun.plugin.version}</version>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
             </dependency>
-            <!-- Spring -->
+            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-install-plugin -->
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aspects</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-tx</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-data</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjrt</artifactId>
-                <version>${aspectj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>${aspectj.version}</version>
-            </dependency>
-            <!-- REST-assured -->
-            <dependency>
-                <groupId>com.jayway.restassured</groupId>
-                <artifactId>rest-assured</artifactId>
-                <version>${restassured.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <build>
-        <plugins>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>${maven.antrun.plugin.version}</version>
-            </plugin>
-            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+            </dependency>
+            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+            <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
-            </plugin>
-            <plugin>
+                <version>2.19.1</version>
+            </dependency>
+            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+            <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>${maven.assembly.plugin.version}</version>
-            </plugin>
-            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+            </dependency>
+            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+            <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.plugin.version}</version>
-            </plugin>
-            <plugin>
+                <version>3.0.0</version>
+            </dependency>
+            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
+            <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${failsafe.plugin.version}</version>
-            </plugin>
-        </plugins>
-    </build>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </dependency>
+            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.5.1</version>
+            </dependency>
+
+            <!-- http://mvnrepository.com/artifact/commons-codec/commons-codec -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.10</version>
+            </dependency>
+
+            <!-- http://mvnrepository.com/artifact/log4j/log4j -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+
+            <!-- http://mvnrepository.com/artifact/org.apache.poi/poi -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>3.10-FINAL</version>
+            </dependency>
+
+            <!-- http://mvnrepository.com/artifact/commons-codec/commons-codec -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.10</version>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
 </project>

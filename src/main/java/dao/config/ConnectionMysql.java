@@ -8,14 +8,16 @@ import java.sql.SQLException;
  * Created by Livia on 12/06/2016.
  */
 public class ConnectionMysql {
-    private static String driver = "com.mysql.jdbc.Driver";
-
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() {
         try {
-            Class.forName(driver);
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return DriverManager.getConnection("jdbc:mysql://localhost/engsolucoes","root", "root");
+        try {
+            return DriverManager.getConnection("jdbc:mysql://localhost/engsolucoes","root", "root");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
