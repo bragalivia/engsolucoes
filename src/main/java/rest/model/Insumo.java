@@ -1,12 +1,14 @@
-package model;
+package rest.model;
 
 /**
- * Created by Livia on 12/06/2016.
+ * Created by Livia on 16/06/2016.
  */
 public class Insumo {
     private int codigo;
     private String origem;
     private String descricao;
+    private String unidade;
+    private Double preco;
 
     public int getCodigo() {
         return codigo;
@@ -30,5 +32,21 @@ public class Insumo {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 }

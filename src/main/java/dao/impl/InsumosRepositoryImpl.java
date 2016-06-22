@@ -1,19 +1,15 @@
 package dao.impl;
 
-import dao.ConnectionMysql;
-import dao.InsumoRepository;
-import model.Insumo;
+import dao.InsumosRepository;
+import dao.config.ConnectionMysql;
+import rest.model.Insumo;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by Livia on 12/06/2016.
+ * Created by Livia on 16/06/2016.
  */
-public class InsumoRepositoryImpl implements InsumoRepository {
-
-    @Override
+public class InsumosRepositoryImpl implements InsumosRepository {
     public boolean create(final Insumo insumo) {
         Connection conn = null;
         Statement stmt = null;
@@ -21,9 +17,10 @@ public class InsumoRepositoryImpl implements InsumoRepository {
         boolean ok = false;
         try {
             String sql = "INSERT INTO insumos VALUES (" +
-                    "'" + insumo.getOrigem() +"', "+ insumo.getCodigo() +", '"+
-                    insumo.getDescricao() +"' )";
-
+                    "'" + insumo.getOrigem() +"', "
+                    + insumo.getCodigo() +", " +
+                    "'"+ insumo.getDescricao() + "' , '" + insumo.getUnidade() +"', '" +
+                    insumo.getPreco() +"' )";
             conn = ConnectionMysql.getConnection();
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
@@ -37,8 +34,6 @@ public class InsumoRepositoryImpl implements InsumoRepository {
                     stmt.close();
                 if (ps != null)
                     ps.close();
-                if (conn != null)
-                    conn.close();
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
@@ -46,40 +41,38 @@ public class InsumoRepositoryImpl implements InsumoRepository {
         return ok;
     }
 
-    @Override
     public Insumo update(final Insumo insumo) {
         return null;
     }
 
-    @Override
     public Insumo read(final Insumo insumo) {
-        Connection conn = null;
-        Statement stmt = null;
-        List<Insumo> list = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM INSUMOS";
-            conn = ConnectionMysql.getConnection();
-            stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery(sql);
-            while (result.next()) {
-                list.add(builder(result));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (stmt != null)
-                    stmt.close();
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-        }
-        return list.get(0);
+//        Connection conn = null;
+//        Statement stmt = null;
+//        List<Insumo> list = new ArrayList<Insumo>();
+//        try {
+//            String sql = "SELECT * FROM INSUMOS";
+//            conn = ConnectionMysql.getConnection();
+//            stmt = conn.createStatement();
+//            ResultSet result = stmt.executeQuery(sql);
+//            while (result.next()) {
+//                list.add(builder(result));
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                if (stmt != null)
+//                    stmt.close();
+//                if (conn != null)
+//                    conn.close();
+//            } catch (SQLException e1) {
+//                e1.printStackTrace();
+//            }
+//        }
+//        return list.get(0);
+        return null;
     }
 
-    @Override
     public int delete(final int codigo, final String origem) {
         return 0;
     }
